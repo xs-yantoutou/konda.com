@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "awesome-slider": "^1.2.0",
+    "jquery": "^3.5.1",
+    "require.js": "^1.0.0",
+    "requirejs": "^2.3.6"
+  }
+}
