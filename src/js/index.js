@@ -1,5 +1,5 @@
 let baseUrl = "http://localhost/konda.com";
-define(['jquery', 'HappyImage'], function($) {
+define(['jquery', 'HappyImage', 'lazyload'], function($) {
     return {
         render: function() {
             $.ajax({
@@ -33,6 +33,12 @@ define(['jquery', 'HappyImage'], function($) {
                 autoplay: 3000
             });
         },
+        // lazyload: function() {
+        //     $(function() {
+        //         $("img").lazyload({ effect: "fadeIn" });
+        //     });
+
+        // },
         srolltop: function() {
             $(function() {
                 $('.left_nav>li').on('click', function() {

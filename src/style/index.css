@@ -247,7 +247,7 @@ i {
   top: -70px;
   left: -323px;
   width: 540px;
-  height: 500px;
+  height: 501px;
   background-color: white;
   margin-left: 557px;
 }
@@ -281,7 +281,7 @@ i {
   top: -160px;
   left: -323px;
   width: 540px;
-  height: 500px;
+  height: 501px;
   background-color: white;
   margin-left: 557px;
 }
@@ -316,7 +316,7 @@ i {
   top: -205px;
   left: -323px;
   width: 540px;
-  height: 500px;
+  height: 501px;
   background-color: white;
   margin-left: 557px;
 }
@@ -359,7 +359,7 @@ i {
   top: -55%;
   left: 100%;
   width: 270px;
-  height: 500px;
+  height: 501px;
   background-color: white;
 }
 
@@ -853,12 +853,7 @@ i {
   margin-left: 10px;
 }
 
-.news_list > .news_list_1 > a > .detail {
-  display: inline-block;
-  padding-left: 10px;
-}
-
-.news_list > .news_list_1 > a > .detail > .detail_a {
+.news_list > .news_list_1 > .detail_a {
   color: #4b98ec !important;
   font-size: 12px !important;
 }

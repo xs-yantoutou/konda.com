@@ -237,7 +237,7 @@ i {
                 top: -70px;
                 left: -323px;
                 width: 540px;
-                height: 500px;
+                height: 501px;
                 background-color: white;
                 margin-left: 557px;
                 >ul {
@@ -265,7 +265,7 @@ i {
                 top: -160px;
                 left: -323px;
                 width: 540px;
-                height: 500px;
+                height: 501px;
                 background-color: white;
                 margin-left: 557px;
                 >ul {
@@ -294,7 +294,7 @@ i {
                 top: -205px;
                 left: -323px;
                 width: 540px;
-                height: 500px;
+                height: 501px;
                 background-color: white;
                 margin-left: 557px;
                 >ul {
@@ -328,7 +328,7 @@ i {
                     top: -55%;
                     left: 100%;
                     width: 270px;
-                    height: 500px;
+                    height: 501px;
                     background-color: white;
                     >li {
                         padding-top: 10px;
@@ -761,13 +761,9 @@ i {
             margin-bottom: 16px;
             margin-left: 10px;
         }
-        >a>.detail {
-            display: inline-block;
-            padding-left: 10px;
-            >.detail_a {
-                color: #4b98ec !important;
-                font-size: 12px !important;
-            }
+        >.detail_a {
+            color: #4b98ec !important;
+            font-size: 12px !important;
         }
     }
     >.last {

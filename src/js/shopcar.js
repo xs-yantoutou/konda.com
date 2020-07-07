@@ -67,7 +67,7 @@ define(['jquery', 'cookie'], function($, cookie) {
             if (shop) {
                 shop = JSON.parse(shop);
             }
-            console.log(shop);
+            // console.log(shop);
             $('#check').on('click', function() {
                 // console.log(this.checked);
                 console.log($('.items_count'));
@@ -91,7 +91,7 @@ define(['jquery', 'cookie'], function($, cookie) {
             $('.items_num>.lose').on('click', function() {
                 // console.log($(this).siblings('input'));
                 let v = $(this).siblings('input').val();
-                if (v >= 1) {
+                if (v > 1) {
                     v--;
                     $(this).siblings('input').val(v);
                     let s = $(this).parent().siblings('.items_count').html();
@@ -152,7 +152,7 @@ define(['jquery', 'cookie'], function($, cookie) {
             });
             $('.items_del').on('click', function() {
                 let productId = parseInt($(this).attr('class'));
-                console.log(shop);
+                // console.log(shop);
                 shop.splice((shop.findIndex(elm => elm.id == productId)), 1);
                 // console.log(shop);
                 shop = JSON.stringify(shop);
@@ -160,17 +160,36 @@ define(['jquery', 'cookie'], function($, cookie) {
                 location.reload();
             });
             $('.delcheck').on('click', function() {
-
-                // console.log($(this));
-                // if($('.items_checkbox>input').attr('checked'))
                 // console.log($('.items_checkbox>input'));
-                // let arr = $('.items_checkbox>input')
-                // $(arr).forEach(function(val, i) {
-                //     if (arr[i].checkd) {
-                //         shop.slice((shop.findIndex(elm => elm.id == arr[i].class)), 1);
-                //         location.reload();
-                //     }
-                // });
+                let arr = Array.from($('.items_checkbox>input'));
+                $(arr).each((i, elm) => {
+                    // console.log(i);
+                    let a = $(elm).prop('checked');
+                    // console.log(a);
+                    if (a) {
+                        let b = $(elm);
+                        // console.log(b);
+                        t1 = shop.filter(elm => {
+                            // return i == $('.items_checkbox>input').eq(i + 1).attr('class');
+                            return elm.id == b.attr('class');
+                        })
+                        shop.forEach((elm, i) => {
+                            // console.log(shop.findIndex(elm => elm.id == t1[0].id));
+                            shop.splice((shop.findIndex(elm => elm.id == t1[0].id)), 1);
+                        });
+                        shop = JSON.stringify(shop);
+                        cookie.set('shop', shop, 1);
+                        location.reload();
+                        // console.log(shop.length);
+                        if (shop.length == 0) {
+                            cookie.remove('shop', '', -1);
+                            location.reload();
+                        };
+                        console.log(shop);
+                    };
+                });
+
+
             });
             $('.items_checkbox>input').on('click', function() {
 
@@ -219,8 +238,8 @@ define(['jquery', 'cookie'], function($, cookie) {
 
 
             });
-            $('.countMoney>i').html();
-            $('.countMoney>span').html();
+            // $('.countMoney>i').html();
+            // $('.countMoney>span').html();
         }
     }
 });
