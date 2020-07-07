@@ -69,23 +69,29 @@ define(['jquery', 'cookie'], function($, cookie) {
             }
             console.log(shop);
             $('#check').on('click', function() {
-                console.log(this.checked);
-                // $('label>input').attr('data-flag', 'true');
-                // console.log($('label>input').attr('data-flag'));
-                // $('label>input').attr('checked', 'true');
+                // console.log(this.checked);
+                console.log($('.items_count'));
+                let _sum = 0;
+
+
                 if (this.checked) {
+
+                    $('.items_count').each((i, elm) => {
+                        // console.log(+($(elm).html()));
+                        // console.log(i);
+                        _sum += (+($(elm).html()));
+                        console.log(_sum);
+                        // $('.countMoney>span').html()
+                    });
+                    $('.countMoney>span').html('￥' + _sum + '.00');
                     $('label>input').prop('checked', true);
-                    // console.log($('label>input'));
-                    // console.log($('label>input').prop('data-flag'));
-                    // console.log($('label>input').attr('data-flag'));
-                    // $('label>input').attr('data-flag', 'true');
-                    // console.log($('label>input').attr('data-flag'));
+
                 }
             });
             $('.items_num>.lose').on('click', function() {
                 // console.log($(this).siblings('input'));
                 let v = $(this).siblings('input').val();
-                if (v != 1) {
+                if (v >= 1) {
                     v--;
                     $(this).siblings('input').val(v);
                     let s = $(this).parent().siblings('.items_count').html();
@@ -93,9 +99,12 @@ define(['jquery', 'cookie'], function($, cookie) {
                     s -= b;
                     $(this).parent().siblings('.items_count').html(s + '.00');
                     let tempinput = $(this).parent().siblings('.items_checkbox').children('input');
-                    let _value = $(this).parent().siblings('.items_count').html();
+                    let _value = $(this).parent().siblings('.items_price').html();
                     let c = +($('.countMoney>span').html().slice(1));
-                    if (tempinput.attr('checked')) {
+                    // console.log(tempinput.prop('checked'));
+                    if (tempinput.prop('checked')) {
+                        // console.log(1);
+                        // console.log(tempinput.attr('checked'));
                         c = c - _value;
                         $('.countMoney>span').html('￥' + c + '.00');
                     }
@@ -116,7 +125,7 @@ define(['jquery', 'cookie'], function($, cookie) {
             $('.items_num>.add').on('click', function() {
                 console.log(1);
                 let v = $(this).siblings('input').val();
-                if (v != 1) {
+                if (v >= 1) {
                     v++;
                     $(this).siblings('input').val(v);
                     let s = +($(this).parent().siblings('.items_count').html());
@@ -126,9 +135,9 @@ define(['jquery', 'cookie'], function($, cookie) {
                 }
                 // console.log($(this).parent().siblings('.items_count'));
                 let tempinput = $(this).parent().siblings('.items_checkbox').children('input');
-                let _value = $(this).parent().siblings('.items_count').html();
+                let _value = +($(this).parent().siblings('.items_price').html());
                 let c = +($('.countMoney>span').html().slice(1));
-                if (tempinput.attr('checked')) {
+                if (tempinput.prop('checked')) {
                     c = c + _value;
                     $('.countMoney>span').html('￥' + c + '.00');
                 }
@@ -163,17 +172,52 @@ define(['jquery', 'cookie'], function($, cookie) {
                 //     }
                 // });
             });
-            $('label>input').on('click', function() {
+            $('.items_checkbox>input').on('click', function() {
+
                 if ($(this).prop('checked')) {
                     let m = +($('.countMoney>span').html().slice(1));
                     m += +($(this).parent().siblings('.items_count').html());
-                    console.log(m);
+                    // console.log(m);
                     $('.countMoney>span').html('￥' + m + '.00');
                 } else {
                     let n = +($('.countMoney>span').html().slice(1));
                     n = n - $(this).parent().siblings('.items_count').html();
                     $('.countMoney>span').html('￥' + n + '.00');
                 }
+            });
+            $('.items_num>input').on('input', function() {
+                // console.log(1);
+                let reg = /\D/g;
+                let str = $(this).val();
+                str = str.replace(reg, '');
+                $(this).val(str);
+                // console.log(str);
+                if ($(this).val() < 1) $(this).val(1);
+                let _v2 = $(this).val();
+                // console.log(_v2);
+                let _v3 = $(this).parent().siblings('.items_count').html()
+                let tempinput = $(this).parent().siblings('.items_checkbox').children('input');
+                let _value = +($(this).parent().siblings('.items_price').html());
+                let c = +($('.countMoney>span').html().slice(1));
+
+                if (tempinput.prop('checked')) {
+                    c = c - _v3;
+                    console.log(c);
+                    console.log(_v3);
+                    // console.log(1);
+                    // $('.countMoney>span').html('￥' + (c + _v3) + '.00');
+                }
+                _v3 = _v2 * _value;
+                $(this).parent().siblings('.items_count').html(_v3 + '.00');
+                if (tempinput.prop('checked')) {
+                    // c = c - _v3;
+                    // console.log(c);
+                    // console.log(_v3);
+                    // console.log(1);
+                    $('.countMoney>span').html('￥' + (c + _v3) + '.00');
+                }
+
+
             });
             $('.countMoney>i').html();
             $('.countMoney>span').html();
