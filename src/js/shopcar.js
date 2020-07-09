@@ -19,7 +19,7 @@ define(['jquery', 'cookie'], function($, cookie) {
                     },
                     dataType: "json",
                     success: function(res) {
-                        console.log(res);
+                        // console.log(res);
                         let tempstr = '';
 
                         res.forEach(elm => {
@@ -29,7 +29,7 @@ define(['jquery', 'cookie'], function($, cookie) {
                             let arr = shop.filter(val => val.id == elm.id);
 
 
-                            console.log(arr);
+                            // console.log(arr);
 
                             tempstr += `
                                         <div class="shop_items">
@@ -170,22 +170,38 @@ define(['jquery', 'cookie'], function($, cookie) {
                         let b = $(elm);
                         // console.log(b);
                         t1 = shop.filter(elm => {
-                            // return i == $('.items_checkbox>input').eq(i + 1).attr('class');
-                            return elm.id == b.attr('class');
-                        })
-                        shop.forEach((elm, i) => {
-                            // console.log(shop.findIndex(elm => elm.id == t1[0].id));
-                            shop.splice((shop.findIndex(elm => elm.id == t1[0].id)), 1);
-                        });
+                                // return i == $('.items_checkbox>input').eq(i + 1).attr('class');
+                                // return elm.id == b.attr('class');
+                                if (elm.id == b.attr('class')) {
+                                    shop.splice((shop.findIndex(elm => elm.id == b.attr('class'))), 1);
+                                }
+                            })
+                            // console.log(t1[0].id);
+                            // console.log(shop);
                         shop = JSON.stringify(shop);
-                        cookie.set('shop', shop, 1);
+                        cookie.set('shop ', shop, 1);
                         location.reload();
-                        // console.log(shop.length);
+                        shop = JSON.parse(shop);
                         if (shop.length == 0) {
                             cookie.remove('shop', '', -1);
                             location.reload();
-                        };
-                        console.log(shop);
+                        }
+                        // let arr = [];
+                        // arr.push(t1[0].id);
+                        // console.log(arr);
+                        // shop.forEach((elm, i) => {
+                        //     // console.log(shop.findIndex(elm => elm.id == t1[0].id));
+                        //     shop.splice((shop.findIndex(elm => elm.id == t1[0].id)), 1);
+                        // });
+                        // shop = JSON.stringify(shop);
+                        // cookie.set('shop', shop, 1);
+                        // location.reload();
+                        // // console.log(shop.length);
+                        // if (shop.length == 0) {
+                        //     cookie.remove('shop', '', -1);
+                        //     location.reload();
+                        // };
+                        // console.log(shop);
                     };
                 });
 

@@ -149,9 +149,12 @@ define(['jquery', 'simpleImage', 'cookie'], function($, o, cookie) {
 
         },
         click: function() {
+            // let top = parseInt($('.ul_box').css('top'));
+            // console.log(parseInt(top));
             $('.up_img').on('click', function() {
+                // console.log(1);
                 let top = parseInt($('.ul_box').css('top'));
-                // console.log(parseInt(top));
+                console.log(parseInt(top));
                 if (top != 0) {
                     $('.ul_box').animate({
                         top: top + 82 + 'px'
@@ -159,9 +162,11 @@ define(['jquery', 'simpleImage', 'cookie'], function($, o, cookie) {
                 }
             });
             $('.down_img').on('click', function() {
+                // console.log(1);
                 let top = parseInt($('.ul_box').css('top'));
+                console.log(top);
                 // console.log(parseInt(top));
-                if (top != '-328') {
+                if (top != -82) {
                     $('.ul_box').animate({
                         top: top - 82 + 'px'
                     }, 500);
