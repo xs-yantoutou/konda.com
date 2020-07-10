@@ -1,4 +1,4 @@
-let baseUrl = "http://localhost/konda.com";
+let baseUrl = "http://10.31.161.43/konda.com";
 define(['jquery', 'HappyImage'], function($) {
     return {
         render: function() {

@@ -1,4 +1,4 @@
-let baseUrl = "http://localhost/konda.com";
+let baseUrl = "http://10.31.161.43/konda.com";
 
 define(['jquery', 'cookie'], function($, cookie) {
     return {
@@ -70,8 +70,10 @@ define(['jquery', 'cookie'], function($, cookie) {
             // console.log(shop);
             $('#check').on('click', function() {
                 // console.log(this.checked);
-                console.log($('.items_count'));
+                // console.log($('.items_count'));
                 let _sum = 0;
+                let sum = ($('.items_checkbox>input').length);
+                $('.countMoney>i').html(sum);
 
 
                 if (this.checked) {
@@ -80,11 +82,12 @@ define(['jquery', 'cookie'], function($, cookie) {
                         // console.log(+($(elm).html()));
                         // console.log(i);
                         _sum += (+($(elm).html()));
-                        console.log(_sum);
+                        // console.log(_sum);
                         // $('.countMoney>span').html()
                     });
                     $('.countMoney>span').html('￥' + _sum + '.00');
                     $('label>input').prop('checked', true);
+                    // console.log($("input[class]"))
 
                 }
             });
@@ -123,7 +126,7 @@ define(['jquery', 'cookie'], function($, cookie) {
                 // $("input[min^='1']").val(s);
             });
             $('.items_num>.add').on('click', function() {
-                console.log(1);
+                // console.log(1);
                 let v = $(this).siblings('input').val();
                 if (v >= 1) {
                     v++;
@@ -210,11 +213,18 @@ define(['jquery', 'cookie'], function($, cookie) {
             $('.items_checkbox>input').on('click', function() {
 
                 if ($(this).prop('checked')) {
+                    let sum = +($('.countMoney>i').html());
+                    sum += 1;
+                    $('.countMoney>i').html(sum);
                     let m = +($('.countMoney>span').html().slice(1));
                     m += +($(this).parent().siblings('.items_count').html());
                     // console.log(m);
                     $('.countMoney>span').html('￥' + m + '.00');
                 } else {
+                    let sum = $('.countMoney>i').html()
+                    sum -= 1;
+                    if (sum < 0) sum = 0;
+                    $('.countMoney>i').html(sum);
                     let n = +($('.countMoney>span').html().slice(1));
                     n = n - $(this).parent().siblings('.items_count').html();
                     $('.countMoney>span').html('￥' + n + '.00');

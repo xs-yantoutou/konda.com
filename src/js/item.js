@@ -1,4 +1,4 @@
-let baseUrl = "http://localhost/konda.com";
+let baseUrl = "http://10.31.161.43/konda.com";
 define(['jquery', 'simpleImage', 'cookie'], function($, o, cookie) {
     return {
         render: function(callback) {
@@ -190,6 +190,14 @@ define(['jquery', 'simpleImage', 'cookie'], function($, o, cookie) {
                 let num = $('.item_count>input').val();
                 if (num != 1) num--;
                 $('.item_count>input').val(num);
+            });
+            $('.item_count>input').on('input', function() {
+                let reg = /\D/g;
+                let str = $(this).val();
+                str = str.replace(reg, '');
+                $(this).val(str);
+                if (str < 1) str = 1;
+                $(this).val(str);
             });
         },
         simpleImage: function() {

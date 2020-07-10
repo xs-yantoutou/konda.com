@@ -19,8 +19,8 @@
     }else{
         // echo "<script>alert('注册成功，请登录');</script>";
         echo '{"user":"0"}';
-    // $sql2 = "insert into users(user_name,user_password)values('$name','$password')";
-    // $mysqli->query($sql2);
+    $sql2 = "insert into users(user_name,user_password)values('$name','$password')";
+    $mysqli->query($sql2);
     // $mysqli->close();
         // echo "<script>location.href = '../src/html/konka.com_login.html'</script>";
     }

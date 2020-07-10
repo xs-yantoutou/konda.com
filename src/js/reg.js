@@ -1,4 +1,4 @@
-let baseUrl = "http://localhost/konda.com";
+let baseUrl = "http://10.31.161.43/konda.com";
 define(['jquery'], function($) {
     return {
         confirm: function() {
@@ -39,7 +39,7 @@ define(['jquery'], function($) {
                                 alert('用户名已存在，请重新输入！');
                             } else {
                                 alert('注册成功，请登录！');
-                                location.href = 'http://localhost/konda.com/src/html/konka.com_login.html';
+                                location.href = `${baseUrl}/src/html/konka.com_login.html`;
                             }
                         }
                     });

@@ -1,11 +1,12 @@
 require.config({
     paths: {
         jquery: './jquery.min',
-        login: './login'
-
+        login: './login',
+        cookie: './cookie'
     },
 
 });
 require(['login'], function(login) {
     login.confirm();
+
 });
